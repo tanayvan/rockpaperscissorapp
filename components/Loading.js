@@ -2,8 +2,17 @@ import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import Malehand from './svg/MaleHand';
 import Femalehand from './svg/Femalehand';
+import * as Animatable from 'react-native-animatable';
 
 export default function Loading() {
+  const loadingAnimaion = {
+    from: {
+      width: '0%',
+    },
+    to: {
+      width: '100%',
+    },
+  };
   return (
     <View style={styles.LoadingContainer}>
       <View style={{position: 'relative'}}>
@@ -17,7 +26,9 @@ export default function Loading() {
       </View>
       <View>
         <View style={styles.loadingBar}>
-          <View style={styles.subLoadingbar}></View>
+          <Animatable.View
+            style={styles.subLoadingbar}
+            animation={loadingAnimaion}></Animatable.View>
           <Text style={styles.loadingBarText}>Loading...</Text>
         </View>
       </View>
@@ -63,7 +74,7 @@ const styles = StyleSheet.create({
     top: -2,
     left: 0,
     backgroundColor: '#FBC399',
-    width: '50%',
+    width: '0%',
     height: '100%',
     borderRadius: 20,
     position: 'absolute',

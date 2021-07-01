@@ -2,10 +2,12 @@ import React from 'react';
 import {View, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+
 import Play from '../assests/icons/play';
 import Store from '../assests/icons/Store';
 import Menu from '../assests/icons/menu';
 import Home from '../screens/Home';
+import StackNavigator from './StackNavigator';
 
 function SettingsScreen() {
   return (
@@ -22,7 +24,6 @@ function SettingsScreen() {
 }
 export default function TabNavigator() {
   const Tab = createBottomTabNavigator();
-
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -44,6 +45,7 @@ export default function TabNavigator() {
             elevation: 0,
             borderTopWidth: 0,
             backgroundColor: '#eee',
+            paddingBottom: 10,
           },
           tabStyle: {
             borderRadius: 20,
@@ -54,7 +56,7 @@ export default function TabNavigator() {
           showLabel: false,
           activeBackgroundColor: 'white',
         }}>
-        <Tab.Screen name="Home" component={Home} />
+        <Tab.Screen name="Home" component={StackNavigator} />
         <Tab.Screen name="Settings" component={SettingsScreen} />
         <Tab.Screen name="Store" component={SettingsScreen} />
       </Tab.Navigator>
